@@ -1,0 +1,99 @@
+{
+  "name": "var-translation",
+  "displayName": "var-translate",
+  "description": "Automatically translate words into English variable name",
+  "publisher": "BaiDong",
+  "icon": "images/logo.png",
+  "version": "0.0.2",
+  "engines": {
+    "vscode": "^1.23.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "translate",
+    "variable",
+    "camel",
+    "var",
+    "翻译",
+    "变量"
+  ],
+  "activationEvents": [
+    "*"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "keybindings": [
+      {
+        "command": "extension.varTranslation",
+        "key": "Alt+shift+a",
+        "mac": "cmd+shift+a"
+      }
+    ],
+    "commands": [
+      {
+        "command": "extension.varTranslation",
+        "title": "varTranslation",
+        "when": "editorTextFocus",
+        "category": "var-translation"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "when": "editorTextFocus",
+          "command": "extension.varTranslation"
+        }
+      ]
+    },
+    "configuration": {
+      "type": "object",
+      "title": "varTranslation configuration",
+      "properties": {
+        "varTranslation.translationEngine": {
+          "type": "string",
+          "enum": [
+            "googleCN",
+            "google",
+            "youdao",
+            "baidu"
+          ],
+          "enumDescriptions": [
+            "google中国",
+            "google",
+            "youdao",
+            "baidu"
+          ],
+          "default": "'google'",
+          "description": "translationEngine"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "postinstall": "node ./node_modules/vscode/bin/install",
+    "release": "standard-version",
+    "test": "npm run compile && node ./node_modules/vscode/bin/test"
+  },
+  "devDependencies": {
+    "@types/mocha": "^2.2.42",
+    "@types/node": "^10.12.21",
+    "standard-version": "^6.0.1",
+    "tslint": "^5.12.1",
+    "typescript": "^3.3.1",
+    "vscode": "^1.1.28"
+  },
+  "dependencies": {
+    "change-case": "^3.1.0",
+    "translation.js": "^0.7.8"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/13161231996"
+  },
+  "homepage": "https://github.com/13161231996"
+}
